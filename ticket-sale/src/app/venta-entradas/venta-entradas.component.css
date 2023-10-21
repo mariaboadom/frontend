@@ -1,0 +1,66 @@
+/* Estilos para la página de venta de entradas */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para la lista de conciertos */
+  .venta-entradas {
+    text-align: center;
+  }
+
+  /* Estilos para el nombre */
+  #nameField {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Campo para la cantidad de entradas (lista desplegable más pequeña) */
+  .venta-entradas select#ticketQuantity {
+    width: 50%; /* Ancho del campo de número de entradas */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Campo para el método de pago (lista desplegable más ancha) */
+  .venta-entradas select#payment {
+    width: 100%; /* Ancho personalizado para el campo de método de pago */
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para el botón */
+  .venta-entradas button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Estilos para los campos específicos de Mastercard y Visa */
+  #creditCardFields {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para los campos específicos de PayPal */
+  #paypalFields {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }  
+  

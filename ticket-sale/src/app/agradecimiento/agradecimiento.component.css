@@ -1,0 +1,26 @@
+/* Estilos para la página de agradecimiento */
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Estilos para la sección de agradecimiento */
+  .agradecimiento {
+    text-align: center;
+  }
+  
+  .agradecimiento h2 {
+    font-size: 1.5rem;
+  }
+  
+  .agradecimiento button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }  

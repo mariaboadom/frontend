@@ -1,0 +1,64 @@
+<app-header></app-header>
+<main>
+    <section class="venta-entradas">
+      <h2>Selecciona la Cantidad de Entradas y Método de Pago</h2>
+      <form>
+        
+        <div id="nameFields">
+          <label for="name">Nombre y Apellidos: </label>
+          <input type="text" id="name" name="name" required #name>
+          <p></p>
+        </div>
+        <!-- Campo para la cantidad de entradas (lista desplegable más pequeña) -->
+        <label for="ticketQuantity">Cantidad de Entradas:</label>
+        <p></p>
+        
+        <select id="ticketQuantity" name="ticketQuantity" required #numberTickets>
+          <option value="1">1 entrada</option>
+          <option value="2">2 entradas</option>
+          <option value="3">3 entradas</option>
+          <option value="4">4 entradas</option>
+          <option value="5">5 entradas</option>
+          <option value="6">6 entradas</option>
+        </select>
+        
+        <p></p>
+        <!-- Campo para el método de pago -->
+        <label for="payment">Método de Pago: </label>
+        <select id="payment" name="payment" required #payment (change)="changeMethod(payment.selectedOptions[0].value)">
+          <option value="" disabled selected>Seleccione un método de pago</option>
+          <option value="mastercard">Mastercard</option>
+          <option value="visa">Visa</option>
+          <option value="paypal">PayPal</option>
+        </select>
+  
+        <!-- Campos específicos para Mastercard y Visa -->
+      <div id="creditCardFields" *ngIf="selectedPaymentMethod === 'mastercard' || selectedPaymentMethod === 'visa'">
+        <label for="cardNumber">Número de Tarjeta: </label>
+        <input type="text" id="cardNumber" name="cardNumber" required>
+        <p></p>
+        <label for="expiryDate">Fecha de Caducidad: </label>
+        <input type="text" id="expiryDate" name="expiryDate" required>
+        <p></p>
+        <label for="cardHolder">Nombre del Titular: </label>
+        <input type="text" id="cardHolder" name="cardHolder" required>
+        <p></p>
+        <label for="cvc">CVC:</label>
+        <input type="text" id="cvc" name="cvc" required>
+      </div>
+
+      <!-- Campos específicos para PayPal -->
+      <div id="paypalFields" *ngIf="selectedPaymentMethod === 'paypal'">
+        <label for="paypalEmail">Correo Electrónico de PayPal: </label>
+        <input type="email" id="paypalEmail" name="paypalEmail" required>
+        <p></p>
+        <label for="paypalPassword">Contraseña de PayPal:</label>
+        <input type="password" id="paypalPassword" name="paypalPassword" required>
+      </div>
+
+  
+        <!-- Botón para continuar (con redireccionamiento) -->
+        <button type="button" (click)="redirectToThankYouPage(name.value,numberTickets.selectedOptions[0].value,payment.selectedOptions[0].value)">Continuar</button>
+      </form>
+    </section>
+  </main>  

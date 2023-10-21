@@ -1,0 +1,32 @@
+<app-header></app-header>
+<main>
+      <h2>Conciertos Disponibles</h2>
+      <div class="concert" *ngFor="let concierto of conciertos">
+        <img [src]="concierto.URLImage">
+        <h3>{{ concierto.Nombre }}</h3>
+        <p>{{ concierto.Fecha }}</p>
+        <p>{{ concierto.Lugar }}<p>
+        <button type="button" (click)="navigateToVentaEntradas(concierto.Nombre)">Continuar</button>
+      </div>  
+
+
+
+
+
+      <!-- <div class="concert">
+        <img src="https://wallpapercave.com/wp/wp12544378.jpg" alt="Concierto 1">
+        <h3>Quevedo</h3>
+        <p>Fecha: 10 de enero de 2024</p>
+        <p>Lugar: Wizink Center, Madrid</p>
+        <button type="button" (click)="navigateToVentaEntradas('Quevedo')">Continuar</button>
+      </div>
+  
+      <div class="concert">
+        <img src="https://www.ellitoral.com/images/2023/06/28/1kQceKAlE_1300x655__1.jpg" alt="Concierto 2">
+        <h3>Duki</h3>
+        <p>Fecha: 15 de febrero de 2024</p>
+        <p>Lugar: Estadio Santiago Bernabeu, Madrid</p>
+        <button type="button" (click)="navigateToVentaEntradas('Duki')">Continuar</button>
+      </div> -->
+  </main>
+  
