@@ -1,0 +1,13 @@
+# Utiliza una imagen base de Node.js
+FROM node:14
+
+WORKDIR /app/web-server
+
+COPY ./web-server/package.json ./web-server/package-lock.json ./
+RUN npm install
+
+COPY ./web-server ./
+
+EXPOSE 4000
+
+CMD ["npm", "run", "dev"]

@@ -1,0 +1,13 @@
+# Utiliza una imagen base de Node.js
+FROM node:14
+
+WORKDIR /app/angular-app
+
+COPY ./ticket-sale/package.json ./ticket-sale/package-lock.json ./
+RUN npm install
+
+COPY ./ticket-sale ./
+
+EXPOSE 4200
+
+CMD ["ng", "serve", "--host", "0.0.0.0"]
