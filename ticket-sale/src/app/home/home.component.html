@@ -1,5 +1,26 @@
 <app-header></app-header>
 <main>
+
+  <div class="centered">
+    <h2>Ya tienes tus entradas con nosotros ? Inicia sesión</h2>
+    <form>
+        <label for="nombre">Nombre de usuario: </label> 
+        <input type="text" id="nombre" name="nombre">
+        <p></p> 
+  
+        <label for="passwd">Contraseña: </label>  
+        <input type="password" id="passwd" name="passwd">
+        <p></p>
+  
+        <label for="idCompra">ID de Compra: </label>     
+        <input type="text" id="idCompra" name="idCompra" required #idCompra>
+        
+        <p></p>
+        <button type="button" (click)="login(idCompra.value)">Iniciar Sesión</button>
+      </form>
+  </div>
+ 
+  
       <h2>Conciertos Disponibles</h2>
       <div class="concert" *ngFor="let concierto of conciertos">
         <img [src]="concierto.URLImage">
@@ -8,25 +29,5 @@
         <p>{{ concierto.Lugar }}<p>
         <button type="button" (click)="navigateToVentaEntradas(concierto.Nombre)">Continuar</button>
       </div>  
-
-
-
-
-
-      <!-- <div class="concert">
-        <img src="https://wallpapercave.com/wp/wp12544378.jpg" alt="Concierto 1">
-        <h3>Quevedo</h3>
-        <p>Fecha: 10 de enero de 2024</p>
-        <p>Lugar: Wizink Center, Madrid</p>
-        <button type="button" (click)="navigateToVentaEntradas('Quevedo')">Continuar</button>
-      </div>
-  
-      <div class="concert">
-        <img src="https://www.ellitoral.com/images/2023/06/28/1kQceKAlE_1300x655__1.jpg" alt="Concierto 2">
-        <h3>Duki</h3>
-        <p>Fecha: 15 de febrero de 2024</p>
-        <p>Lugar: Estadio Santiago Bernabeu, Madrid</p>
-        <button type="button" (click)="navigateToVentaEntradas('Duki')">Continuar</button>
-      </div> -->
   </main>
   

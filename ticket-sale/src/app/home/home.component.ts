@@ -14,7 +14,16 @@ export class HomeComponent implements OnInit{
   conciertos:any = []
 
   constructor(private router: Router, private http: HttpClient) {}
-
+  
+  base64ToArrayBuffer(base64:any) {
+    const binaryString = window.atob(base64);
+    const length = binaryString.length;
+    const bytes = new Uint8Array(length);
+    for (let i = 0; i < length; i++) {
+      bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes.buffer;
+  }
 
   ngOnInit(){
     const httpOptions = {
@@ -39,6 +48,33 @@ export class HomeComponent implements OnInit{
   navigateToVentaEntradas(concertId: string) {
     // Redirige a la página de venta de entradas y pasa el ID del concierto como parámetro
     this.router.navigate(['/venta-entradas'], { queryParams: { concertId: concertId } });
+  }
+
+  login(idCompra:any){
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    const jdata = {"data":idCompra}
+    
+    this.http.post<String>(this.apiURL+"getMyTicket", jdata, httpOptions).subscribe(
+      (res: any) => {
+        console.log(res)
+
+        const pdfBlob = res.pdf;
+        const pdfBuffer = this.base64ToArrayBuffer(pdfBlob);
+        const filename = res.title;
+        const id_compra = res.idCompra;
+
+
+        const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
+        const url = window.URL.createObjectURL(blob);
+        this.router.navigate(['/agradecimiento'], { queryParams: { pdfURL: url, id_compra: id_compra} });
+      },
+      (error) => {
+        console.error(error);        
+      }
+    );
+
   }
 }
 

@@ -11,6 +11,9 @@ main {
     text-align: center;
   }
   
+  .centered{
+    text-align: center;
+  }
   .concert {
     text-align: center;
     border: 1px solid #ccc;

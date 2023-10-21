@@ -4,6 +4,7 @@ const ctrl = require('./controller')
 
 router.post('/',ctrl.getResponse);
 router.get('/getEvents',ctrl.getEvents);
+router.post('/getMyTicket',ctrl.getMyTicket);
 
 // router.get('/:id',ctrl.getJuguete);
 // router.get('/usuarios/:id',ctrl.getVerificacion);

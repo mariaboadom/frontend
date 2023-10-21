@@ -58,7 +58,36 @@ async function waitForResponse(user_id){
     return message
 }
 
+texto.getMyTicket = async (req,res) =>{
 
+    id_compra = req.body["data"]
+    s3Key = id_compra;
+    console.log(`KEY S3:${s3Key}`)
+
+    s3.getObject({ Bucket: bucketName, Key: s3Key }, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Error al obtener el archivo PDF desde S3')
+            console.log("ERRORRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
+            return;
+        }
+
+        else{
+            // Establece los encabezados para la respuesta
+            res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Content-Disposition', `inline; filename="${id_compra}`);
+            // Envía el contenido del archivo PDF como respuesta
+
+            const responseObj = {
+                pdf: data.Body.toString('base64'),
+                title: id_compra,
+                idCompra: id_compra,
+                };
+            res.send(responseObj);
+        }
+    });
+
+}
 texto.getEvents = async (req, res) => {   
     const params = {
         TableName: 'Eventos', // Reemplaza con el nombre de tu tabla
@@ -130,13 +159,13 @@ texto.getResponse = async (req, res) => {
             else{
                 // Establece los encabezados para la respuesta
                 res.setHeader('Content-Type', 'application/json');
-                res.setHeader('Content-Disposition', `inline; filename="${id_compra}.pdf`);
+                res.setHeader('Content-Disposition', `inline; filename="${s3Key};`);
                 // Envía el contenido del archivo PDF como respuesta
 
                 const responseObj = {
                     pdf: data.Body.toString('base64'),
                     title: id_compra,
-                    idCompra: id_compra,
+                    idCompra: s3Key,
                     };
                 res.send(responseObj);
             }
