@@ -10,7 +10,7 @@ import { Json } from 'aws-sdk/clients/robomaker';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  apiURL= 'http://localhost:4000/hola/';
+  apiURL= 'http://44.212.115.191:4000/hola/';
   conciertos:any = []
 
   constructor(private router: Router, private http: HttpClient) {}

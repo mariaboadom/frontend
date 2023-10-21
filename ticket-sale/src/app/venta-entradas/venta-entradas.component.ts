@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./venta-entradas.component.css']
 })
 export class VentaEntradasComponent {
-  apiURL= 'http://localhost:4000/hola/';
+  apiURL= 'http://44.212.115.191:4000/hola/';
   selectedPaymentMethod = ""; // Propiedad para almacenar el método de pago seleccionado
   selectedEvent =""
 
