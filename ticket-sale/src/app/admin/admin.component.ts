@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent {
-  apiURL= 'http://44.212.115.191:4000/hola/admin';
+  apiURL= 'http://44.212.115.191:4000/hola/';
   conciertos:any = []
   constructor(private router: Router, private http: HttpClient) {}
 
