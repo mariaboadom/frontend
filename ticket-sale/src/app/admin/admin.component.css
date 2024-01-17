@@ -1,0 +1,73 @@
+/* Estilos para la página de inicio */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2{
+  text-align: center;
+}
+
+.centered{
+  text-align: center;
+}
+.concert {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f9f9f9;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+}
+
+/* Estilos para las imágenes de conciertos */
+.concert img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.concert h3 {
+  font-size: 1.5rem;
+}
+
+.concert a {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+  
+  /* Estilos para la lista de conciertos */
+  .venta-entradas {
+    text-align: center;
+  }
+
+  /* Estilos para el nombre */
+  #nameFields {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Estilos para el botón */
+  .venta-entradas button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

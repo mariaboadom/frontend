@@ -34,7 +34,9 @@ export class HomeComponent implements OnInit{
         //console.log(res)
         //bucle para recorrerlos
         for(var i = 0 ; i< res.length;i++){
-          this.conciertos.push({"Nombre":res[i]["eventos"]["S"], "Lugar":res[i]["Lugar"]["S"], "Fecha":res[i]["Fecha"]["S"], "URLImage":res[i]["URLImage"]["S"]})
+          var state = res[i]["EventState"]["S"]
+          if(state!= "Cancelled")
+            this.conciertos.push({"Nombre":res[i]["eventos"]["S"], "Lugar":res[i]["Lugar"]["S"], "Fecha":res[i]["Fecha"]["S"], "URLImage":res[i]["URLImage"]["S"]})
         }
       },
       (error) => {
@@ -48,6 +50,11 @@ export class HomeComponent implements OnInit{
   navigateToVentaEntradas(concertId: string) {
     // Redirige a la página de venta de entradas y pasa el ID del concierto como parámetro
     this.router.navigate(['/venta-entradas'], { queryParams: { concertId: concertId } });
+  }
+
+  navigateToAdmin(){
+      // Redirige a la página de venta de entradas y pasa el ID del concierto como parámetro
+      this.router.navigate(['/admin'], { queryParams: {} });
   }
 
   login(idCompra:any){

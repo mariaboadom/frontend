@@ -10,7 +10,7 @@ const sqs = new AWS.SQS({ region: 'us-east-1' });
 const dynamodb = new AWS.DynamoDB({ region: 'us-east-1' }) 
 const queueUrlRequest = 'https://sqs.us-east-1.amazonaws.com/392492183407/cola-entrada.fifo';
 const queueUrlReceive = 'https://sqs.us-east-1.amazonaws.com/392492183407/cola-salida.fifo';
-
+const sns = new AWS.SNS({ region: "us-east-1" })
 
 async function waitForResponse(user_id){
     //Nos quedamos esperando hasta que llegue nuestra respuesta
@@ -56,6 +56,46 @@ async function waitForResponse(user_id){
     }
 
     return message
+}
+
+texto.updateEvent = async (req, res) => {
+    evento = req.body["data"]
+   
+
+    const tablaNombre = 'Eventos';
+    console.log(evento);
+
+    const clavePrimaria = {
+        'eventos': { 'S': evento.trim() }
+    };
+
+    try {
+        const response = await dynamodb.getItem({ TableName: tablaNombre, Key: clavePrimaria }).promise();
+        const item = response.Item || {};
+        console.log(item);
+        const actualizacion = {
+            UpdateExpression: 'SET EventState = :val1',
+            ExpressionAttributeValues: {
+                ':val1': { 'S': "Cancelled" }
+            },
+            TableName: tablaNombre,
+            Key: clavePrimaria
+        };
+
+        // Realiza la actualización
+        await dynamodb.updateItem(actualizacion).promise();
+
+        await sns.publish({
+            "Message": "El evento "+evento+ " ha sido cancelado.",
+            "TopicArn": "arn:aws:sns:us-east-1:392492183407:EventChange"
+        }).promise();
+
+        res.send({a:"Evento cancelado con éxito."});
+    } catch (error) {
+        console.error("Error al consultar o actualizar el elemento:", error);
+    }    
+
+
 }
 
 texto.getMyTicket = async (req,res) =>{

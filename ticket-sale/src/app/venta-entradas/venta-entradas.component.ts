@@ -17,7 +17,7 @@ export class VentaEntradasComponent {
 
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
+    this.route.queryParams.subscribe((params:any)=> {
       // params es un objeto que contiene todos los parámetros de consulta
       this.selectedEvent = params['concertId']; // Reemplaza 'parametro' con el nombre de tu parámetro de consulta
       console.log('Valor del parámetro:', this.selectedEvent);

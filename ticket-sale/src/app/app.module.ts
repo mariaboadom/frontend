@@ -9,6 +9,7 @@ import { VentaEntradasComponent } from './venta-entradas/venta-entradas.componen
 import { AgradecimientoComponent } from './agradecimiento/agradecimiento.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ErrorComponent } from './error/error.component';
     HomeComponent,
     VentaEntradasComponent,
     AgradecimientoComponent,
-    ErrorComponent
+    ErrorComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

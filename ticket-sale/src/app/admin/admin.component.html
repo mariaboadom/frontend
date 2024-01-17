@@ -1,0 +1,14 @@
+<app-header></app-header>
+<main>
+    <section class="venta-entradas">
+      
+      <h2>Conciertos Disponibles</h2>
+      <div class="concert" *ngFor="let concierto of conciertos">
+        <img [src]="concierto.URLImage">
+        <h3>{{ concierto.Nombre }}</h3>
+        <p>{{ concierto.Fecha }}</p>
+        <p>{{ concierto.Lugar }}<p>
+          <button type="button" (click)="updateEvent(concierto.Nombre)">CANCELAR EVENTO</button>
+      </div> 
+    </section>
+  </main>  

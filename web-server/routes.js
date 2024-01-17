@@ -3,6 +3,7 @@ const router = Router()
 const ctrl = require('./controller')
 
 router.post('/',ctrl.getResponse);
+router.post('/admin',ctrl.updateEvent);
 router.get('/getEvents',ctrl.getEvents);
 router.post('/getMyTicket',ctrl.getMyTicket);
 
