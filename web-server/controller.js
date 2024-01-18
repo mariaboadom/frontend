@@ -170,6 +170,9 @@ texto.getResponse = async (req, res) => {
     myStatus = message.Body.split(";")[0] 
     path = message.Body.split(";")[1] 
     id_compra = message.Body.split(";")[3] 
+    email = message.Body.split(";")[4] 
+
+
     const deleteParams = {
         QueueUrl: queueUrlReceive,
         ReceiptHandle: message.ReceiptHandle
@@ -185,6 +188,19 @@ texto.getResponse = async (req, res) => {
     });
 
     if(myStatus == "ok"){
+        //suscripcion a sns
+        sns.subscribe({
+            Protocol: 'email',
+            TopicArn: 'arn:aws:sns:us-east-1:392492183407:EventChange',
+            Endpoint: email
+          }, (err, data) => {
+            if (err) {
+              console.error('Error al suscribir la dirección de correo electrónico:', err);
+            } else {
+              console.log('Correo electrónico suscrito correctamente:', data);
+            }
+          });
+
         s3Key = path.trim() + "/" + id_compra.trim() + ".pdf";
         console.log(`KEY S3:${s3Key}`)
     

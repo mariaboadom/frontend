@@ -41,7 +41,7 @@ export class VentaEntradasComponent {
     return bytes.buffer;
   }
   
-  async redirectToThankYouPage(name:any, numberTickets:any,payment:any) {
+  async redirectToThankYouPage(name:any, numberTickets:any,payment:any, email:any) {
     // Obtener el valor del método de pago seleccionado
     this.selectedPaymentMethod = payment; // Asegúrate de tener una propiedad 'payment' en tu componente para almacenar el método de pago seleccionado.
 
@@ -53,7 +53,7 @@ export class VentaEntradasComponent {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
-    var data = this.selectedEvent+";"+name + ";" + numberTickets + ";"
+    var data = this.selectedEvent+";"+name + ";" + numberTickets + ";"+email
     var jdata = {"data":data}
     
     await this.http.post<String>(this.apiURL, jdata, httpOptions).subscribe(

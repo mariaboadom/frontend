@@ -9,6 +9,11 @@
           <input type="text" id="name" name="name" required #name>
           <p></p>
         </div>
+        <div id="nameFields">
+          <label for="name">Correo Electronico</label>
+          <input type="text" id="email" name="email" required #email>
+          <p></p>
+        </div>
         <!-- Campo para la cantidad de entradas (lista desplegable más pequeña) -->
         <label for="ticketQuantity">Cantidad de Entradas:</label>
         <p></p>
@@ -58,7 +63,7 @@
 
   
         <!-- Botón para continuar (con redireccionamiento) -->
-        <button type="button" (click)="redirectToThankYouPage(name.value,numberTickets.selectedOptions[0].value,payment.selectedOptions[0].value)">Continuar</button>
+        <button type="button" (click)="redirectToThankYouPage(name.value,numberTickets.selectedOptions[0].value,payment.selectedOptions[0].value,email.value)">Continuar</button>
       </form>
     </section>
   </main>  
