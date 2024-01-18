@@ -53,7 +53,7 @@ export class VentaEntradasComponent {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
 
-    var data = this.selectedEvent+";"+name + ";" + numberTickets + ";"+email
+    var data = this.selectedEvent+";"+name + ";" + numberTickets + ";"+email+";"
     var jdata = {"data":data}
     
     await this.http.post<String>(this.apiURL, jdata, httpOptions).subscribe(
